@@ -1,1 +1,5 @@
 .idea
+.terraform
+*.hcl
+*.tfstate*
+*.zip
