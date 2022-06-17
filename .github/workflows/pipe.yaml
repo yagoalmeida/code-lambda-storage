@@ -11,6 +11,8 @@ jobs:
       with:
         tf_version: "1.0.9"
         os_version: "ubuntu-20.04"
+        use_state_bucket: true
+        bucket_name: "shared-storage-terraform-state-dev"
       secrets:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
