@@ -1,22 +1,18 @@
-name: "Pipe Terraform"
+name: "Pipe deployment python lambda"
 
 on:
   push:
     branches:
       - '*'
   pull_request:
-
 jobs:
   terraform:
       permissions: write-all
-      uses: "yagoalmeida/terraform_actions/.github/workflows/terraform_actions.yaml@main"
+      uses: "yagoalmeida/python_actions/.github/workflows/lambda-python-deployment.yaml@main"
       with:
-        tf_version: "1.0.9"
-        os_version: "ubuntu-20.04"
-        use_state_bucket: true
-        bucket_name: "shared-storage-terraform-state-dev"
-        use_infracost: true
+        AWS_DEFAULT_REGION: "us-east-1"
+        bucket_name: "storage-code-lambda-dev"
+        lambda_name: "poc_lambda_iac"
       secrets:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        infracost_api_key: ${{ secrets.INFRACOST_API_KEY }}
